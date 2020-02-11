@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>{{ title }} Page</h4>
+
+{% if questions %}
+    <ul class="list-group">
+        {% for question in questions %}
+            <a href="/polls/{{ question.id }}/details/" class="list-group-item list-group-item-action">{{ question.title }}</a>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>There is no question available.</p>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,61 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+<div class="card text-center my-4">
+  <div class="card-header">
+    {{ title }} Page
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ question.title }}</h5>
+
+    <p class="card-text">
+      <div class="panel-body">
+          <ul class="list-group">
+            {% for choice in question.choices %}
+              <li class="list-group-item">
+                  <div class="radio">
+                      <label>
+                          <input type="radio" name="optionsRadios">
+                          {{ choice.text }} ({{ choice.votes }})
+                      </label>
+                  </div>
+              </li>
+            {% empty %}
+
+              <li class="list-group-item">
+                <div class="alert alert-info" role="alert">No options available</div>
+              </li>
+            {% endfor %}
+          </ul>
+      </div>
+    </p>
+    <a href="#" class="btn btn-primary">Submit</a>
+  </div>
+  <div class="card-footer text-muted">
+    <div class="row">
+      <div class="col col-4">
+        <small class="text-muted">
+          Created By: {{ question.created_by.first_name }} {{ question.created_by.last_name }}
+        </small>
+      </div>
+      <div class="col col-4">
+        <small class="text-muted">
+          Created On: {{ question.created_at }}
+        </small>
+      </div>
+      <div class="col col-4">
+        <small class="text-muted">
+          Ends On: {{ question.updated_at }}
+        </small>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock content %}
